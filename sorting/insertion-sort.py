@@ -1,3 +1,8 @@
+"""
+Insertion Sort
+
+Time Complexity: O(n^2)
+"""
 def insertion_sort(a):
     for j in range(1, len(a)):
         print(f"j: {j}")
