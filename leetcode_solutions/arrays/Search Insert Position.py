@@ -48,3 +48,15 @@ class Solution:
             return l
 
         return search(0, len(nums))
+
+
+class Solution2:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        if not nums:
+            return 0
+
+        for i, num in enumerate(nums):
+            if num >= target:
+                return i
+
+        return len(nums)
