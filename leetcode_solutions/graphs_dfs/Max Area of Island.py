@@ -35,6 +35,35 @@ from typing import *
 
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        maxa = 0
+        rows = len(grid)
+        columns = len(grid[0])
+        visited = set()
+
+        def dfs(r, c):
+            if r >= rows or r < 0 or c >= columns or c < 0:
+                return 0
+            if grid[r][c] == 0 or (r, c) in visited:
+                return 0
+
+            visited.add((r, c))
+            a = 0
+            a += dfs(r + 1, c)
+            a += dfs(r - 1, c)
+            a += dfs(r, c + 1)
+            a += dfs(r, c - 1)
+
+            return a + 1
+
+        for r in range(rows):
+            for c in range(columns):
+                if (r, c) not in visited and grid[r][c] == 1:
+                    maxa = max(dfs(r, c), maxa)
+
+        return maxa
+
+class Solution2:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         if not grid:
             return 0
 
