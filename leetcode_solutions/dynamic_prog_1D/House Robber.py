@@ -31,6 +31,24 @@ Constraints:
 from typing import *
 
 
+class Solution1:
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) < 3:
+            return max(nums)
+
+        dp = [0] * len(nums)
+        dp[0], dp[1] = nums[0], nums[1]
+        dp[2] += dp[0] + nums[2]
+
+        j = 3
+
+        while j < len(nums):
+            dp[j] += max(dp[j - 2], dp[j - 3]) + nums[j]
+            j += 1
+
+        return max(dp)
+
+
 class Solution:
     def rob(self, nums: List[int]) -> int:
         p = 3
