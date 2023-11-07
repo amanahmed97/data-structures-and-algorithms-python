@@ -31,6 +31,20 @@ Constraints:
 from typing import *
 
 
+class Solution1:
+    def longestPalindrome(self, s: str) -> str:
+        pal = ""
+
+        for i in range(len(s)):
+            for l, r in ((i, i), (i, i + 1)):
+                while l >= 0 and r < len(s) and s[l] == s[r]:
+                    if (r - l + 1) > len(pal):
+                        pal = s[l:r + 1]
+                    l -= 1
+                    r += 1
+
+        return pal
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         res = ""
