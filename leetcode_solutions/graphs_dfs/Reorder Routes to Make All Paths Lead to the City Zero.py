@@ -1,13 +1,16 @@
 """
-https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/?envType=study-plan-v2&envId=leetcode-75
+https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/description/
 
-There are n cities numbered from 0 to n - 1 and n - 1 roads such that there is only one way to travel between two different cities (this network form a tree). Last year, The ministry of transport decided to orient the roads in one direction because they are too narrow.
+There are n cities numbered from 0 to n - 1 and n - 1 roads such that there is only one way to travel between two
+different cities (this network form a tree). Last year, The ministry of transport decided to orient the roads in one
+direction because they are too narrow.
 
 Roads are represented by connections where connections[i] = [ai, bi] represents a road from city ai to city bi.
 
 This year, there will be a big event in the capital (city 0), and many people want to travel to this city.
 
-Your task consists of reorienting some roads such that each city can visit the city 0. Return the minimum number of edges changed.
+Your task consists of reorienting some roads such that each city can visit the city 0. Return the minimum number of
+edges changed.
 
 It's guaranteed that each city can reach city 0 after reorder.
 
@@ -32,7 +35,37 @@ Output: 0
 
 
 """
+from typing import *
+import collections
+
 class Solution:
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        edges = {(s, t) for s, t in connections}
+        adj = collections.defaultdict(list)  # bi directional
+        minch = 0
+        visit = set()
+
+        for s, t in connections:
+            # edges.add((s,t))
+            adj[s].append(t)
+            adj[t].append(s)
+
+        def dfs(s):
+            nonlocal minch
+
+            for t in adj[s]:
+                if t in visit:
+                    continue
+                if (t, s) not in edges:
+                    minch += 1
+                visit.add(t)
+                dfs(t)
+
+        visit.add(0)
+        dfs(0)
+        return minch
+
+class Solution2:
     changes = 0
     adj = []
 
