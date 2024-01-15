@@ -30,3 +30,10 @@ class Solution:
         # print( heapq.nlargest(k, nums)[-1] )
         # return heapq.nlargest(k, nums)
         return heapq.nlargest(k, nums)[-1]
+
+
+a = [3, 2, 4, 5, 6]
+s = Solution()
+
+ans = s.findKthLargest(a, 3)
+print(ans)
