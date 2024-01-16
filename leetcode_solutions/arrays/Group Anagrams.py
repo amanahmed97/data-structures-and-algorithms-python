@@ -3,7 +3,8 @@ https://leetcode.com/problems/group-anagrams/description/
 
 Given an array of strings strs, group the anagrams together. You can return the answer in any order.
 
-An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using
+all the original letters exactly once.
 
 
 
@@ -32,7 +33,8 @@ Constraints:
 
 
 """
-
+from collections import defaultdict
+from typing import *
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
@@ -56,7 +58,7 @@ class Solution:
         return op
 
 
-
+# Works
 def groupAnagrams(strs):
     ans = defaultdict(list)
 
@@ -65,6 +67,7 @@ def groupAnagrams(strs):
         for c in s:
             count[ord(c) - ord("a")] += 1
         ans[tuple(count)].append(s)
+        # print(tuple(count))
     print(ans)
     return ans.values()
 
