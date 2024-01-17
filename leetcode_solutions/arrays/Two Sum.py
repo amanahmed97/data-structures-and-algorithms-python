@@ -36,7 +36,7 @@ Constraints:
 
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 """
-
+from typing import *
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:

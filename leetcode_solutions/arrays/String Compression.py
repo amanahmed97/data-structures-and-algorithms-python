@@ -7,7 +7,8 @@ Begin with an empty string s. For each group of consecutive repeating characters
     If the group's length is 1, append the character to s.
     Otherwise, append the character followed by the group's length.
 
-The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars.
+The compressed string s should not be returned separately, but instead, be stored in the input character array chars.
+Note that group lengths that are 10 or longer will be split into multiple characters in chars.
 
 After you are done modifying the input array, return the new length of the array.
 
@@ -44,6 +45,29 @@ Constraints:
 
 import copy
 from typing import *
+
+
+class Solution1:
+    def compress(self, chars: List[str]) -> int:
+        w, r = 0, 0
+
+        while r < len(chars):
+            chars[w] = chars[r]
+            count = 1
+
+            while (r + 1) < len(chars) and chars[r + 1] == chars[r]:
+                r += 1
+                count += 1
+
+            if count > 1:
+                for c in str(count):
+                    chars[w + 1] = c
+                    w += 1
+
+            w += 1
+            r += 1
+
+        return w
 
 class Solution:
     def compress(self, chars: List[str]) -> int:
