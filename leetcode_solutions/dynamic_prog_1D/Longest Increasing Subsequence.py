@@ -53,3 +53,22 @@ class Solution:
                     dp[i] = max(dp[i], dp[j] + 1)
 
         return max(dp)
+
+
+class Try1:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        sub = []
+        res = 0
+
+        for n in nums:
+            if not sub:
+                sub.append(n)
+            elif n <= sub[-1]:
+                sub.pop()
+                # sub.append(n)
+            # else:
+            sub.append(n)
+
+            res = max(res, len(sub))
+
+        return res - 1

@@ -31,6 +31,27 @@ Constraints:
 from typing import *
 
 
+class Solution1:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        op = []
+
+        def backtrack(subset, visit):
+            if len(subset) == len(nums):
+                op.append(subset[:])
+                return
+
+            for n in nums:
+                if n not in visit:
+                    visit.add(n)
+                    subset.append(n)
+                    backtrack(subset, visit)
+                    visit.remove(n)
+                    subset.pop()
+
+        backtrack([], set())
+        return op
+
+
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         visited = set()
