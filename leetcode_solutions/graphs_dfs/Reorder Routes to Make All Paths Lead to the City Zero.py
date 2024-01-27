@@ -38,6 +38,33 @@ Output: 0
 from typing import *
 import collections
 
+
+class Solution1:
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        edges = {(s, t) for s, t in connections}
+        changes = 0
+        adj = collections.defaultdict(list)
+        visit = set()
+
+        for s, t in connections:
+            adj[s].append(t)
+            adj[t].append(s)
+
+        def dfs(s):
+            nonlocal changes
+            if s in visit:
+                return
+            visit.add(s)
+            for t in adj[s]:
+                if t not in visit:
+                    if (t, s) not in edges:
+                        changes += 1
+                    dfs(t)
+
+        dfs(0)
+        return changes
+
+
 class Solution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
         edges = {(s, t) for s, t in connections}
