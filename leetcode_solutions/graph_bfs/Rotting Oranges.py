@@ -22,7 +22,8 @@ Example 2:
 
 Input: grid = [[2,1,1],[0,1,1],[1,0,1]]
 Output: -1
-Explanation: The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.
+Explanation: The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens
+4-directionally.
 
 Example 3:
 

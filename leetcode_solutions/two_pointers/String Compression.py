@@ -47,6 +47,36 @@ import copy
 from typing import *
 
 
+class Solution2:
+    def compress(self, chars: List[str]) -> int:
+        count = 0
+        w, r = 0, 0
+        cc = 0
+
+        while r < len(chars):
+            if chars[r] == chars[w]:
+                cc += 1
+                r += 1
+            else:
+                if cc > 1:
+                    n = str(cc)
+                    for i in n:
+                        w += 1
+                        chars[w] = i
+                cc = 0
+                w += 1
+                chars[w] = chars[r]
+
+        if cc > 1:
+            n = str(cc)
+            for i in n:
+                w += 1
+                chars[w] = i
+        w += 1
+        return w
+
+
+
 class Solution1:
     def compress(self, chars: List[str]) -> int:
         w, r = 0, 0
