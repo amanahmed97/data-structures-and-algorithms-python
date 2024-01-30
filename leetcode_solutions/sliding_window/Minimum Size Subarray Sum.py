@@ -29,6 +29,8 @@ Follow up: If you have figured out the O(n) solution, try coding another solutio
 
 from typing import *
 import sys
+
+
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
         total = 0

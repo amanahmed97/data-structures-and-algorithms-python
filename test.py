@@ -39,3 +39,11 @@ def groupAnagrams(strs):
     return ans.values()
 
 print(groupAnagrams(["abc","cba","tea","ate"]))
+
+"""
+dictionary of integers
+"""
+a = defaultdict(int)
+a[1]+=5
+print(a[2])
+# op:  defaultdict(<class 'int'>, {1: 5})
