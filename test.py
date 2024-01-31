@@ -47,3 +47,14 @@ a = defaultdict(int)
 a[1]+=5
 print(a[2])
 # op:  defaultdict(<class 'int'>, {1: 5})
+
+"""
+array methods
+"""
+a = [8,9,7]
+print(a.index(7))
+a.remove(7)
+print(a)
+# [8, 9]
+print(Counter(a))
+# Counter({8: 1, 9: 1})
