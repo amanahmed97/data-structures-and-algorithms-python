@@ -63,3 +63,14 @@ class Solution:
                     l = mid + 1
 
         return -1
+
+
+class Solution2:
+    def search(self, nums: List[int], target: int) -> int:
+        idx = -1
+        try:
+            idx=nums.index(target)
+        except:
+            idx=-1
+        finally:
+            return idx

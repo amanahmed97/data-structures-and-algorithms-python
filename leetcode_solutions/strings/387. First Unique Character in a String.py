@@ -28,6 +28,8 @@ Constraints:
     s consists of only lowercase English letters.
 """
 from typing import *
+import collections
+
 
 class Solution:
     def firstUniqChar(self, s: str) -> int:
@@ -37,11 +39,27 @@ class Solution:
         for c in s:
             if c in uniq:
                 uniq.remove(c)
-            elif  c not in suniq:
+            elif c not in suniq:
                 uniq.append(c)
                 suniq.add(c)
         print(uniq)
         return s.index(uniq[0]) if uniq else -1
+
+
+class Solution2:
+    def firstUniqChar(self, s: str) -> int:
+        """
+        :type s: str
+        :rtype: int
+        """
+        # build hash map: character and how often it appears
+        count = collections.Counter(s)
+
+        # find the index
+        for idx, ch in enumerate(s):
+            if count[ch] == 1:
+                return idx
+        return -1
 
 
 class Solution1:
