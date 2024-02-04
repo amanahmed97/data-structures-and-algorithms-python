@@ -8,8 +8,6 @@ denotes the largest integer less than or equal to x.
 
     For n = 1, 2, 3, 4, and 5, the middle nodes are 0, 1, 1, 2, and 2, respectively.
 
-
-
 Example 1:
 
 Input: head = [1,3,4,7,1,2,6]

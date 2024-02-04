@@ -6,7 +6,6 @@ palindrome
 or false otherwise.
 
 
-
 Example 1:
 
 Input: head = [1,2,2,1]
