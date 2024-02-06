@@ -36,6 +36,12 @@ Follow up:
 """
 from typing import *
 
+
+class Solution2:
+    def countBits(self, n: int) -> List[int]:
+        return [i.bit_count() for i in range(n+1)]
+
+
 class Solution:
     def countBits(self, n: int) -> List[int]:
         def onebits(i: int):

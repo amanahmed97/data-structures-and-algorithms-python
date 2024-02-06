@@ -21,6 +21,10 @@ Constraints:
     -107 <= k <= 107
 """
 
+"""
+Prefix Sum Concept
+"""
+
 from typing import *
 
 # O(n) Time complexity
