@@ -38,3 +38,17 @@ class Solution:
                 res += rmax - height[r]
 
         return res
+
+
+class Solution2:
+    def trap(self, height: List[int]) -> int:
+        res = 0
+
+        for i in range(1, len(height) - 1):
+            leftMax = max(height[:i])
+            rightMax = max(height[i + 1:])
+            print(i, leftMax, rightMax)
+            if min(leftMax, rightMax) > height[i]:
+                res += min(leftMax, rightMax) - height[i]
+
+        return res
