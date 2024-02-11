@@ -45,6 +45,29 @@ class Solution1:
 
         return pal
 
+
+class Solution2:
+    def longestPalindrome(self, s: str) -> str:
+        longest = ""
+
+        for i in range(len(s)):
+            l1 = self.checkPal(i, i, s)
+            l2 = self.checkPal(i, i + 1, s)
+            l = l1 if len(l1) > len(l2) else l2
+            longest = l if len(l) > len(longest) else longest
+
+        return longest
+
+    def checkPal(self, l, r, s):
+        longer = ""
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            if len(s[l:r + 1]) > len(longer):
+                longer = s[l:r + 1]
+            l -= 1
+            r += 1
+        return longer
+
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         res = ""

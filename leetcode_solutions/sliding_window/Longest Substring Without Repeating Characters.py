@@ -20,6 +20,26 @@ Output: 1
 Explanation: The answer is "b", with the length of 1.
 
 """
+
+
+class Solution1:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        p1, p2 = 0, 1
+        longest = 1
+        if not s:
+            return 0
+
+        while p2 < len(s):
+            if s[p2] not in s[p1:p2]:
+                p2 += 1
+            else:
+                p1 += 1
+            longest = max(longest, len(s[p1:p2]))
+
+        return longest
+
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if not len(s):
