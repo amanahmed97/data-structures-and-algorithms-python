@@ -34,6 +34,26 @@ Constraints:
 from typing import *
 from collections import *
 
+
+class Solution1:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        maxe = max(nums)
+        counts = defaultdict(int)
+
+        for v in nums:
+            counts[v] += v
+
+        dp = [0] * (maxe + 1)
+        dp[0] = 0
+        dp[1] = counts[1]
+
+        for i in range(2, maxe + 1):
+            dp[i] = max(dp[i - 1], dp[i - 2] + counts[i])
+
+        # print(dp)
+        return dp[-1]
+
+
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         upper = max(nums) + 1
