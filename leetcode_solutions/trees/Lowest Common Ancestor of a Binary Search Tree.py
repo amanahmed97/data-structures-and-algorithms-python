@@ -44,6 +44,20 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
+class Solution1:
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
+        while True:
+            if root.val < p.val and root.val < q.val:
+                root = root.right
+            elif root.val > p.val and root.val > q.val:
+                root = root.left
+            else:
+                return root
+
+
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         def checker(root, child, p, q):
@@ -76,6 +90,8 @@ class Solution:
         resv, resop = checker(root, root, p, q)
         return TreeNode(resop[-1])
 
+
+class Tries:
     def lowestCommonAncestor6(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         def checker(root, child, p, q):
             op = list()
