@@ -67,3 +67,27 @@ class Solution:
 
         dfs(root, -sys.maxsize)
         return res
+
+
+class Solution2:
+    def goodNodes(self, root: TreeNode) -> int:
+        res = []
+
+        def dfs(parent, root, maxval):
+            nonlocal res
+            if not root:
+                return
+
+            if parent:
+                if root.val >= maxval:
+                    # print(root.val)
+                    res.append(root.val)
+            else:
+                res.append(root.val)
+
+            maxval = max(maxval, root.val)
+            dfs(root, root.left, maxval)
+            dfs(root, root.right, maxval)
+
+        dfs(None, root, root.val)
+        return len(res)
